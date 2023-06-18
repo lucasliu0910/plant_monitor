@@ -18,6 +18,8 @@ void setup() {
   digitalWrite(pumpPin,HIGH);
   
   Serial.begin(115200);
+
+  wifi_setup();
 }
 
 void loop() {
@@ -34,6 +36,9 @@ void loop() {
     delay(500);
     watering=1; //用來記錄澆水
   }
+
+  UploadData(); //上傳資料
+  
   watering=0; //將澆水紀錄歸零
   
   //delay(60000);
@@ -44,4 +49,6 @@ void loop() {
     delay(1000); //1 sec
     if (( i % 10) == 9) Serial.println();
   }
+
+  //print_test2();
 }
